@@ -1,0 +1,31 @@
+{# templates/main.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Schedule{% endblock %}
+
+{% block body %}
+  <div class="row">
+    <div class="col-2"><h1>Shift</h1></div>
+    <div class="col-10"><h1>CPC</h1></div>
+  </div>
+  {% for shift, controllers in schedule %}
+    <div class="row">
+      <div class="col-2"><p>{{ shift }}</p></div>
+      <div class="col-10">
+        {% for controller in controllers %}
+          <div class="btn-group">
+            <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{ controller }}</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Change Shift</a></li>
+              <li><a class="dropdown-item" href="#">Assign Leave</a></li>
+              <li><a class="dropdown-item" href="#">Add Remark</a></li>
+              <li><a class="dropdown-item" href="#">Add Team Brief</a></li>
+              <li><a class="dropdown-item" href="#">View Details</a></li>
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
