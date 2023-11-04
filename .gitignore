@@ -1,3 +1,4 @@
+db.dbi
 
 ###> symfony/framework-bundle ###
 /.env.local
