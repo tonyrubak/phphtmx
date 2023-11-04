@@ -7,7 +7,7 @@
 
 import 'htmx.org';
 const $ = require('jquery');
-require('bootstrap');
+window.bootstrap = require('bootstrap');
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
