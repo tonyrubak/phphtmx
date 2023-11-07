@@ -19,7 +19,7 @@
               <div class="btn-group">
                 <button class="btn btn-primary dropdown-toggle" style="min-width: 100px;" data-bs-toggle="dropdown" aria-expanded="false">{{ controller }}</button>
                 <ul class="dropdown-menu">
-                  <li><button class="dropdown-item" hx-get="/shiftRequest?employee={{ controller }}" hx-target="#modal-content" hx-include="[name='date']">Request Shift Change</button></li>
+                  <li><button class="dropdown-item" hx-get="/shiftRequest?employee={{ controller }}&date={{ date }}" hx-target="#modal-content">Request Shift Change</button></li>
                   <li><a class="dropdown-item" href="#">Request Leave</a></li>
                   <li><a class="dropdown-item" href="#">Add Remark</a></li>
                   <li><a class="dropdown-item" href="#">Add Team Brief</a></li>
@@ -32,7 +32,6 @@
       {% endfor %}
     </tbody>
   </table>
-  <input type="hidden" name="date" value="{{ date }}"/>
   <div class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content" id="modal-content">
