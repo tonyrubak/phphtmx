@@ -5,6 +5,92 @@
 {% block title %}Schedule{% endblock %}
 
 {% block body %}
+  <style>
+    .tag {
+    display: flex;
+    align-items: center;
+    margin: 7px 0;
+    margin-right: 10px;
+    padding: 0 10px;
+    border: 1px solid orange;
+    border-radius: 5px;
+    background-color: orange;
+    white-space: nowrap;
+    color: white;
+    }
+
+    .input-container {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 14px;
+    border: 1px grey solid;
+    border-radius: 5px;
+    color: black;
+    }
+
+    .input-container input {
+    width: 100%;
+    min-width: 50%;
+    border: none;
+    border-radius: 5px;
+    padding: 14px;
+    padding-left: 14px;
+    }
+
+    .input-dropdown {
+    width: 10rem;
+    padding: 0 0.5rem;
+    background-color: white;
+    color: black;
+    border-color: black;
+    border-radius: 5px;
+    border-width: 5px;
+    }
+  </style>
+  <div
+    x-data="{
+      open: false,
+      search: '',
+      items: ['foo', 'bar', 'baz'],
+      tags: [],
+      get filteredItems() {
+        return this.items.filter(
+          i => i.startsWith(this.search)
+        )
+      }
+    }"
+    >
+
+    <div class="input-container bg-white">
+      <template x-for="item in tags" :key="item">
+          <div class="tag" x-text="item"></div>
+      </template>
+      <input
+        x-model="search"
+        placeholder="Search..."
+        class="form-control border-0 shadow-none"
+        @keyup="
+          if (!open) open = true;
+          if ($event.key == ',')
+            {
+              tags.unshift(search.slice(0, -1));
+              search = '';
+            }
+          if (search.length == 0) open = false;"
+        />
+    </div>
+    <div x-show="open">
+      <ul class="input-dropdown">
+        <template x-for="item in filteredItems" :key="item">
+          <li class="dropdown-item" x-text="item"></li>
+        </template>
+      </ul>
+    </div>
+  </div>
+      
+
+<!--
   <table class="table">
     <thead>
       <th scope="col">Shift</th>
@@ -32,6 +118,7 @@
       {% endfor %}
     </tbody>
   </table>
+-->
   <div class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content" id="modal-content">

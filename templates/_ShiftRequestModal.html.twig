@@ -1,9 +1,11 @@
 {# templates/_ShiftRequestModal.html.twig #}
 
-<div class="modal-header">
+{% extends '_modal_base.html.twig' %}
+
+{% block modal_header %}
   <h1 class="modal-title fs-5" id="shiftChangeModalLabel">Request Shift Change</h1>
-</div>
-<div class="modal-body">
+{% endblock %}
+{% block modal_body %}
   <form hx-post="/shiftRequest" hx-target="#modal-content">
     <div class="mb-3">
       <label for="shiftChangeSelect" class="form-label">Requested shift</label>
@@ -18,5 +20,4 @@
     <input name="requestType" type="hidden" value="CHG"/>
     <button class="btn btn-success" type="submit">Submit</button>
   </form>
-</div>
-<div class="modal-footer"></div>
+{% endblock %}
