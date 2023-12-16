@@ -23,6 +23,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "alpinejs": "^3.13.3",
         "htmx.org": "^1.9.6"
     }
 }
